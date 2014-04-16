@@ -76,7 +76,49 @@ public class SpeedPref{
 	public File getFile() {
 		return file;
 	}
-
+	
+	//Others
+	
+	public void swap(String key1,String key2){
+		String temp;
+		temp = tree.get(key1);
+		tree.put(key1, tree.get(key2));
+		tree.put(key2, temp);	
+	}
+	
+	public void remove(String key){
+		tree.remove(key);
+	}
+	
+	public boolean exists(String key){
+		return tree.get(key)!="";
+	}
+	
+	public void changeKey(String key,String newKey){
+		tree.put(newKey, tree.get(key));
+		tree.remove(key);
+	}
+	
+	public void copy(String key,String newKey){
+		tree.put(newKey, tree.get(key));
+	}
+	
+	public void inverseBoolean(String key){
+		tree.put(key, tree.get(key)=="false" ? "true" : "false");
+	}
+	
+	public void incrementInt(String key){
+		int n = Integer.parseInt(tree.get(key));
+		n++;
+		tree.put(key, new Integer(n).toString());
+	}
+	
+	public void decrementInt(String key){
+		int n = Integer.parseInt(tree.get(key));
+		n--;
+		tree.put(key, new Integer(n).toString());
+	}
+	
 	//Save
 
 	public void save(){
